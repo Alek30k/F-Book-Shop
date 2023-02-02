@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Books = () => {
   const [books, setBooks] = useState([]);
@@ -18,7 +19,30 @@ const Books = () => {
 
   console.log(books);
 
-  return <div>Books</div>;
+  return (
+    <div>
+      <h1>Ale Book Shop</h1>
+      <div className="books">
+        {books.map((book) => (
+          <div key={book.id} className="book">
+            <img src={book.cover} alt="" />
+            <h2>{book.title}</h2>
+            <p>{book.desc}</p>
+            <span>${book.price}</span>
+            <button className="delete">Delete</button>
+            <button className="update">
+              <Link
+                to={`/update/${book.id}`}
+                style={{ color: "inherit", textDecoration: "none" }}
+              >
+                Update
+              </Link>
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Books;
