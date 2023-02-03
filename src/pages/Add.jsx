@@ -53,7 +53,7 @@ const Add = () => {
       />
       <input
         type="text"
-        placeholder="Book cover"
+        placeholder="Book url"
         name="cover"
         onChange={handleChange}
       />
