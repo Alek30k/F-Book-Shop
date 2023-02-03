@@ -1,5 +1,6 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Add = () => {
@@ -9,7 +10,6 @@ const Add = () => {
     price: null,
     cover: "",
   });
-
   const [error, setError] = useState(false);
 
   const navigate = useNavigate();
@@ -17,8 +17,6 @@ const Add = () => {
   const handleChange = (e) => {
     setBook((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-
-  console.log(book);
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -60,6 +58,7 @@ const Add = () => {
         onChange={handleChange}
       />
       <button onClick={handleClick}>Add</button>
+      {error && "Something went wrong!"}
       <Link to="/">See all books</Link>
     </div>
   );
